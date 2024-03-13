@@ -106,3 +106,78 @@ And by taking the minimum distance at each stage, we get the shortest path.
 or
 1 → 3 → 4 → 2 → 1
 ```
+
+## Code
+
+Brute force solution:
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+
+const int INFINITE = numeric_limits<int>::max();
+const int MAX_SIZE = 10001;
+int GRAPH[MAX_SIZE][MAX_SIZE];
+
+// calculates the cost of the solution [a, b, c]
+// like this, cost[a][b] + cost[b][c] + cost[c][a]
+int tsp(int n, int solutions[]) {
+  int cost = 0;
+
+  for (int i = 0; i < n - 1; i++) {
+    int u = solutions[i];
+    int v = solutions[i + 1];
+    cost += GRAPH[u][v];
+  }
+
+  cost += GRAPH[solutions[n - 1]][solutions[0]];
+
+  return cost;
+}
+
+int main() {
+  int minCost = INFINITE, vertexCount;
+
+  // input
+  do {
+    printf("Enter the number of vertices (max = %d): ", MAX_SIZE - 1);
+    cin >> vertexCount;
+  } while (vertexCount >= MAX_SIZE);
+
+  int solution[vertexCount + 1], optimalSolution[vertexCount + 1];
+
+  printf("Enter the %d*%d adjacency matrix:\n", vertexCount, vertexCount);
+  for (int i = 0; i < vertexCount; i++)
+    for (int j = 0; j < vertexCount; j++)
+      cin >> GRAPH[i][j];
+
+  // initial solution i.e 0, 1, 2, 3...
+  for (int i = 0; i < vertexCount; i++)
+    solution[i] = i;
+
+  // brute force:
+  // iterate over all permutations of solution:
+  //  if a new minimum cost is found:
+  //    update minimum cost
+  //    copy that permutation as the new optimal solution
+  do {
+    int cost = tsp(vertexCount, solution);
+    if (cost < minCost) {
+      minCost = cost;
+      for (int i = 0; i < vertexCount; i++)
+        optimalSolution[i] = solution[i];
+    }
+  } while (next_permutation(solution, solution + vertexCount));
+
+  // output
+  printf("Minimum cost: %d\n", minCost);
+
+  printf("Optimal tour: ");
+  printf("%d", optimalSolution[0] + 1);
+  for (int i = 1; i < vertexCount; i++)
+    printf("-->%d", optimalSolution[i] + 1);
+  printf("-->%d\n", optimalSolution[0] + 1);
+
+  return 0;
+}
+```
