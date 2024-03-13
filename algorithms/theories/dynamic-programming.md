@@ -11,3 +11,5 @@ DP often drastically reduces the amount of enumeration by avoiding sequences tha
 ## Problems and Algorithms
 
 - [0/1 Knapsack](../implementations/01-knapsack.md)
+- [Shortest Path in Multistage Graph](../implementations/multistage-graph.md)
+- [Travelling Salesperson](../implementations/travelling-salesperson.md)

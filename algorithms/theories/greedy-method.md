@@ -13,7 +13,7 @@ Most Greedy problems have n inputs, some constraint and an objective function. T
 
 ## Problems and Alogrithms
 
-- Fractional Knapsack Problem
+- [Fractional Knapsack Problem](../implementations/fractional-knapsack.md)
 - Prim's MST Algorithm
 - Kruskal's MST Algorithm
 - Dijkstra's Shortest Path Algorithm
