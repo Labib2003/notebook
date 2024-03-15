@@ -2,6 +2,10 @@
 
 ## Index
 
+- Data Structures:
+
+  - [Array](./data-structures/array.md)
+
 - Algorithms:
 
   - Implementations:
