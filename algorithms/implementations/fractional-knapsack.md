@@ -48,3 +48,69 @@ The sorted order: [5, 3, 4, 2, 1]
 **Max Profit** = 124
 
 **Optimal Solution Set**: {0, 1/8, 1, 1, 1}
+
+## Code
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef struct Item {
+  int no, weight, profit;
+} Item;
+
+vector<Item> items;
+
+bool compareItems(Item a, Item b) {
+  //    a1.p / a1.w > a2.p / a2.w
+  // => a1.p * a2.w > a2.p / a1.w
+  return a.profit * b.weight > b.profit * a.weight;
+}
+
+int main() {
+  int n;
+  double capacity, profit = 0;
+
+  printf("Enter the number of items and capacity: ");
+  cin >> n >> capacity;
+
+  for (int i = 0; i < n; i++) {
+    int w, p;
+    printf("Enter the weight and profit of item %d: ", i + 1);
+    cin >> w >> p;
+    items.push_back({i, w, p});
+  }
+
+  sort(items.begin(), items.end(), compareItems);
+
+  printf("Items taken:\n");
+  for (Item &item : items) {
+    int taken = min(capacity, (double)item.weight);
+
+    double fraction_taken = (double)taken / item.weight;
+
+    profit += item.profit * fraction_taken;
+    capacity -= taken;
+
+    printf("Item %d: %lf unit(s)\n", item.no + 1, fraction_taken);
+  }
+
+  printf("Profit: %lf\n", profit);
+
+  return 0;
+}
+```
+
+### IO
+
+```
+Enter the number of items and capacity: 3 50
+Enter the weight and profit of item 1: 10 60
+Enter the weight and profit of item 2: 20 100
+Enter the weight and profit of item 3: 30 120
+Items taken:
+Item 1: 1.000000 unit(s)
+Item 2: 1.000000 unit(s)
+Item 3: 0.666667 unit(s)
+Profit: 240.000000
+```
