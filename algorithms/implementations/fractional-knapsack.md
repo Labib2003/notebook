@@ -68,8 +68,8 @@ bool compareItems(Item a, Item b) {
 }
 
 int main() {
-  int n;
-  double capacity, profit = 0;
+  int n, capacity;
+  double  profit = 0;
 
   printf("Enter the number of items and capacity: ");
   cin >> n >> capacity;
@@ -85,7 +85,7 @@ int main() {
 
   printf("Items taken:\n");
   for (Item &item : items) {
-    int taken = min(capacity, (double)item.weight);
+    int taken = min(capacity, item.weight);
 
     double fraction_taken = (double)taken / item.weight;
 

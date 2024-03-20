@@ -21,7 +21,7 @@ Given N items where each item has some weight and profit associated with it and 
    1. Navigate to the corresponding weight column (m<sub>j</sub>) and copy values from the previous row up to that point.
    2. For subsequent columns, calculate the value using the formula:
       ```
-      b[i, w] = max(b[i - 1, w], b[i - 1, w - w[i]] + p[i])
+      b[i, w] = max(b[i - 1, w], b[i - 1, w - weight[i]] + p[i])
       ```
 4. The bottom right corner of the table now holds the maximum profit.
 5. To identify the optimal items, employ backtracking:
@@ -54,3 +54,64 @@ p = [1, 2, 5]
 | Item 1 | Item 2 | Item 3 |
 | ------ | ------ | ------ |
 | 1      | 0      | 1      |
+
+## Code
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int knapsack(int capacity, int weight[], int profit[], int n) {
+  int dp_table[n + 1][capacity + 1];
+
+  for (int i = 0; i <= n; i++) {
+    // because we are adding an extra 0th item and 0 weight
+    int idx = i - 1;
+    for (int j = 0; j <= capacity; j++) {
+      // Set the values in the 0th row and column of the table to 0
+      if (i == 0 || j == 0)
+        dp_table[i][j] = 0;
+
+      // copy the value from the previous row up to the corresponding weight
+      else if (j < weight[idx])
+        dp_table[i][j] = dp_table[i - 1][j];
+
+      // apply formula
+      else
+        dp_table[i][j] = max(dp_table[i - 1][j],
+                             dp_table[i - 1][j - weight[idx]] + profit[idx]);
+    }
+  }
+  // return bottom right corner
+  return dp_table[n][capacity];
+}
+
+int main() {
+  int n, capacity;
+
+  printf("Enter the number of items and capacity: ");
+  cin >> n >> capacity;
+
+  int weight[n], profit[n];
+
+  for (int i = 0; i < n; i++) {
+    printf("Enter the profit and weight of item %d: ", i + 1);
+    cin >> profit[i] >> weight[i];
+  }
+
+  printf("Maximum profit: %d\n", knapsack(capacity, weight, profit, n));
+
+  return 0;
+}
+```
+
+### IO
+
+```
+Enter the number of items and capacity: 3 50
+Enter the profit and weight of item 1: 60 10
+Enter the profit and weight of item 2: 100 20
+Enter the profit and weight of item 3: 120 30
+Maximum profit: 220
+
+```
