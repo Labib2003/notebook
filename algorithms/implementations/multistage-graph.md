@@ -25,21 +25,12 @@ where l is the vertices connected to the current vertex
 
 Given
 
-|     | s   | a   | b   | c   | d   | e   | f   | t   |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| s   | 0   | 1   | 2   | 3   | 0   | 0   | 0   | 0   |
-| a   | 0   | 0   | 0   | 0   | 4   | 4   | 0   | 0   |
-| b   | 0   | 0   | 0   | 0   | 9   | 5   | 10  | 0   |
-| c   | 0   | 0   | 0   | 0   | 0   | 0   | 2   | 0   |
-| d   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 18  |
-| e   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 13  |
-| f   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 2   |
-| t   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   |
+![multistage example](../../assets/multistage-example.png)
 
 Step 1:
 
 ```
-cost(4, 7) = 0
+cost(4, t) = 0
 ```
 
 Step 2:
