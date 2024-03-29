@@ -26,3 +26,4 @@ It is a bottom up approach used to optimize iterative calls. It breaks the probl
 - [Shortest Path in Multistage Graph](../implementations/multistage-graph.md)
 - [Travelling Salesperson](../implementations/travelling-salesperson.md)
 - [All Pair Shortest Path (Floyd Warshall Algorithm)](../implementations/all-pair-shortest-path-floyd-warshall.md)
+- [Optimal Binary Search Tree](../implementations/optimal-binary-search-tree.md)
