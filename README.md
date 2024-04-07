@@ -17,9 +17,11 @@
     - [All Pair Shortest Path (Floyd Warshall Algorithm)](./algorithms/implementations/all-pair-shortest-path-floyd-warshall.md)
     - [Single Source Shortest Path (Dijkstra's Algorithm)](./algorithms/implementations/single-source-shortest-path-dijkstra.md)
     - [Optimal Binary Search Tree](./algorithms/implementations/optimal-binary-search-tree.md)
+    - [N-Queens Problem](./algorithms/implementations/n-queens-problem.md)
   - Theories:
     - [Greedy Method](./algorithms/theories/greedy-method.md)
     - [Dynamic Programming](./algorithms/theories/dynamic-programming.md)
+    - [Backtracking](./algorithms/theories/backtracking.md)
 
 - DBMS:
   - Theories:
